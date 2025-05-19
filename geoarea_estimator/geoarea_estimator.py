@@ -1,6 +1,5 @@
 
 import numpy as np
-from scipy.special import erfinv
 from prettytable import PrettyTable
 
 __all__ = ["GeoRegionArea"]
@@ -283,7 +282,7 @@ class GeoRegionArea(object):
 
         a_tot = self._area_square(min_lat, max_lat, min_lon, max_lon)
         self.region_area = p_region*a_tot
-        self.error = erfinv(0.95)*a_tot/np.sqrt(2.*n_samples)
+        self.error = 1.96*a_tot/np.sqrt(2.*n_samples)
     
 
     def results(self):
